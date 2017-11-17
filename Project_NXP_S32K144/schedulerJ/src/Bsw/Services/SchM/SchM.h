@@ -14,12 +14,14 @@
 
 typedef struct{
     uint8_t FlagOverLoad: 1;    //Flag for indicating that an Overload have occured
-    uint8_t FlagTaskReady:1;    //Flag for indicating that there is a task in Ready/Running state
+    uint8_t FlagTaskState:1;    //Flag for indicating that there is a task in Ready/Running state
 } Flags;
 
 extern void SchM_Init( const SchM_ConfigType *SchMConfig );
 extern void SchM_Start( void );
 extern void SchM_Stop( void );
-
+void TurnOnOverloadPin(void);
+void TurnOnBackgroundPin(void);
+void TurnOffBackgroundPin(void);
 
 #endif /* BSW_SERVICES_SCHM_SCHM_H_ */

@@ -33,8 +33,7 @@ uint32_t OsTickCounter = 0; /* Remove this line */
 
 void SchM_OsTick( void )
 {
-	//uint8_t FlagRunning=0;
-	//uint8_t FlagOF=0;
+	
 
 	uint8_t LocTaskIdx;
 
@@ -42,28 +41,16 @@ void SchM_OsTick( void )
 
 	//Set Ready the Task if mask match the Counter
 	for(LocTaskIdx = 0; LocTaskIdx < GlbSchMConfig->NumOfTasks; LocTaskIdx++){
+
 		if((SchM_SchedulerStatus.OsTickCounter & GlbSchMConfig->TaskConfig[LocTaskIdx].TaskMask) == GlbSchMConfig->TaskConfig[LocTaskIdx].TaskOffset){  //if((Counter & Mask) == Offset)
-				if(FlagsScheduler.FlagTaskReady == 1){		//Review if there is any Task in Running or Start State before activating other task
+				if(FlagsScheduler.FlagTaskState == 1){		//Review if there is any Task in Running or Start State before activating other task
 					FlagsScheduler.FlagOverLoad = 1;		//Set the OverLoad Flag
+					TurnOnOverloadPin(); 					 //TurnOn the OVERLOADPIN
 				}
 					SchM_TaskControlBlock[LocTaskIdx].SchM_TaskState=SCHM_TASK_STATE_READY;
-					FlagsScheduler.FlagTaskReady = 1;		//Set the Flag that indicates the activation of a Task
+					FlagsScheduler.FlagTaskState = 1;		//Set the Flag that indicates the activation of a Task
 			}
 	}
-
-
-
-
-	/* Remove the following lines */
-	/*
-	OsTickCounter++;
-
-	if (OsTickCounter > 640)
-	{
-		Dio_PortTooglePin(PORTCH_D, 0);
-		OsTickCounter = 0;
-	}
-	*/
 }
 
 void SchM_Background( void )
@@ -77,14 +64,15 @@ void SchM_Background( void )
 			{
 				SchM_TaskControlBlock[LocTaskIdx].SchM_TaskState = SCHM_TASK_STATE_RUNNING;
 				SchM_SchedulerStatus.SchM_SchedulerState = SCHM_RUNNING;
+				TurnOffBackgroundPin();	//Turn off the pin that indicates when the Background function is being executed
 				GlbSchMConfig->TaskConfig[LocTaskIdx].TaskCallback();
 				SchM_TaskControlBlock[LocTaskIdx].SchM_TaskState = SCHM_TASK_STATE_SUSPENDED;
 				//Clear the Flag that indicates that there is one Task Activated.
-				FlagsScheduler.FlagTaskReady = 0 ;
+				FlagsScheduler.FlagTaskState = 0 ;
 				SchM_SchedulerStatus.SchM_SchedulerState = SCHM_IDLE;
+				TurnOnBackgroundPin(); //Turn on the pin that indicates when the Background function is being executed
 			}
 		}
-
 	}
 }
 
@@ -114,3 +102,18 @@ void SchM_Stop( void )
 {
 	LPIT0_Stop();
 }
+
+TurnOnOverloadPin(void){
+	Dio_PortSetPin(PORTCH_E,PINOVERLOAD);
+}
+
+void TurnOnBackgroundPin(void){
+	Dio_PortSetPin(PORTCH_E,PINBKG);
+}
+
+void TurnOffBackgroundPin(void){
+	Dio_PortClearPin(PORTCH_E,PINBKG);
+
+}
+
+

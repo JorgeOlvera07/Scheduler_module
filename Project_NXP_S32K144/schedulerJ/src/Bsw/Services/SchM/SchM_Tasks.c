@@ -11,48 +11,39 @@
 
 void SchM_3p125ms_Task ( void )
 {
-	static int counter = 0;
-	counter++;
-	if(counter == 1000){
-	/* Task Body */
-	Dio_PortSetPin(PORTCH_D, 15);
-	}
-	/* ....   */
-	if (counter == 2000){
 
-	Dio_PortClearPin(PORTCH_D, 15);
-	counter=0;
-	}
+	Dio_PortTooglePin(PORTCH_C, PIN3P125MS);
+	//static int counter;
+	//for(counter=0;counter <= NumberOfCycles; counter++){}
+
 }
 
 
 void SchM_6p25ms_Task ( void )
 {
-	
-	/* Task Body */
+	Dio_PortTooglePin(PORTCH_B, PIN6P25MS);
+	//static int counter;
+	//for(counter=0;counter <= NumberOfCycles; counter++){}
+
 }
 
 extern void SchM_12p5ms_Task   ( void ){
-	/* Task Body */
+	Dio_PortTooglePin(PORTCH_B, PIN12P5MS);
+	//static int counter;
+	//for(counter=0;counter <= NumberOfCycles; counter++){}
 }
 extern void SchM_25ms_Task     ( void ){
-	/* Task Body */
+	Dio_PortTooglePin(PORTCH_B, PIN25MS);
+	//static int counter;
+	//for(counter=0;counter <= NumberOfCycles; counter++){}
 }
 extern void SchM_50ms_Task     ( void ){
-	/* Task Body */
+	Dio_PortTooglePin(PORTCH_B, PIN50MS);
+	//static int counter;
+	//for(counter=0;counter <= NumberOfCycles; counter++){}
 }
 extern void SchM_100ms_Task    ( void ){
-	
-	static int counter = 0;
-	counter++;
-	if(counter == 10){
-	/* Task Body */
-	Dio_PortSetPin(PORTCH_D, 0);
-	}
-	/* ....   */
-	if (counter == 20){
-
-	Dio_PortClearPin(PORTCH_D, 0);
-	counter=0;
-	}
+	Dio_PortTooglePin(PORTCH_C, PIN100MS);
+	//static int counter;
+	//for(counter=0;counter <= NumberOfCycles; counter++){}
 }
