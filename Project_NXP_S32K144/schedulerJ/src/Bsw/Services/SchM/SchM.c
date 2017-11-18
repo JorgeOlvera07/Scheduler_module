@@ -1,13 +1,52 @@
-/*
- * SchM.c
- *
- *  Created on: 15/11/2017
- *      Author: uid87753
+/*============================================================================*/
+/*                        I BS SOFTWARE GROUP                                 */
+/*============================================================================*/
+/*                        OBJECT SPECIFICATION                                */
+/*============================================================================*/
+/*!
+ * $Source: SchM.c $
+ * $Revision: 3 $
+ * $Author: Jorge Alberto Olvera Contreras, Luis Eduardo Archundia Picazzo $
+ * $Date: 17/11/2017 $
  */
+/*============================================================================*/
+/* DESCRIPTION :                                                              */
+/** \
+    
+*/
+/*============================================================================*/
+/* COPYRIGHT (C) CONTINENTAL AUTOMOTIVE 2014                                  */
+/* AUTOMOTIVE GROUP, Interior Division, Body and Security                     */
+/* ALL RIGHTS RESERVED                                                        */
+/*                                                                            */
+/* The reproduction, transmission, or use of this document or its content is  */
+/* not permitted without express written authority. Offenders will be liable  */
+/* for damages.                                                               */
+/* All rights, including rights created by patent grant or registration of a  */
+/* utility model or design, are reserved.                                     */
+/*                                                                            */
+/*============================================================================*/
+/*============================================================================*/
+/*                    REUSE HISTORY - taken over from                         */
+/*============================================================================*/
+/*  AUTHOR             |      VERSION       |        DESCRIPTION              */
+/*----------------------------------------------------------------------------*/
+/*  Luis Archundia     |         3          |                                 */
+/*  Jorge Olvera       |         3          |                                 */
+/*============================================================================*/
+/*                               OBJECT HISTORY                               */
+/*============================================================================*/
+/*
+ * $Log: SchM.c  $
+  ============================================================================*/
 
+
+/* Includes */
+/*============================================================================*/
 #include "General.h"
 #include "SchM.h"
 #include "Lpit.h"
+
 /* #include "Dio.h" line must be removed as it is just an example to access on Port D pin 0 !!!
  * Note: Dio module provides access to all Dio (Digital Input Output channels configured as GPIO). The user must ensure that
  *       the PORT pins are properly configured from Port module as GPIO input or output channel from the intended PORT
@@ -18,8 +57,16 @@
  *  */
 #include "Dio.h"
 
+
+
+/* Defines */
+/*============================================================================*/
 #define NUM_OF_TASKS (0x6)
 
+
+
+/* Constants and types */
+/*============================================================================*/
 const SchM_ConfigType *GlbSchMConfig;
 
 SchM_TaskControlBlockType SchM_TaskControlBlock[NUM_OF_TASKS];
@@ -31,6 +78,13 @@ Flags FlagsScheduler={
 
 uint32_t OsTickCounter = 0; /* Remove this line */
 
+
+/* Exported Variables */
+/*============================================================================*/
+
+
+/* Exported functions */
+/*============================================================================*/
 void SchM_OsTick( void )
 {
 	
@@ -52,6 +106,7 @@ void SchM_OsTick( void )
 			}
 	}
 }
+
 
 void SchM_Background( void )
 {
@@ -76,6 +131,7 @@ void SchM_Background( void )
 	}
 }
 
+
 void SchM_Init( const SchM_ConfigType *SchMConfig )
 {
 	GlbSchMConfig = SchMConfig;
@@ -92,28 +148,40 @@ void SchM_Init( const SchM_ConfigType *SchMConfig )
 	SchM_SchedulerStatus.SchM_SchedulerState = SCHM_INIT;
 }
 
+
 void SchM_Start( void )
 {
 	LPIT0_Start();
 	SchM_Background();
 }
 
+
 void SchM_Stop( void )
 {
 	LPIT0_Stop();
 }
 
+
 TurnOnOverloadPin(void){
 	Dio_PortSetPin(PORTCH_E,PINOVERLOAD);
 }
+
 
 void TurnOnBackgroundPin(void){
 	Dio_PortSetPin(PORTCH_E,PINBKG);
 }
 
+
 void TurnOffBackgroundPin(void){
 	Dio_PortClearPin(PORTCH_E,PINBKG);
 
 }
+
+
+/* Notice: the file ends with a blank new line to avoid compiler warnings */
+
+
+
+
 
 

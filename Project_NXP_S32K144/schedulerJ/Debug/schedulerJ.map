@@ -123,7 +123,6 @@ Discarded input sections
  .debug_macro   0x00000000      0x15b ./src/Bsw/Services/SchM/SchM.o
  .debug_macro   0x00000000       0x28 ./src/Bsw/Services/SchM/SchM.o
  .debug_macro   0x00000000       0x58 ./src/Bsw/Services/SchM/SchM.o
- .debug_macro   0x00000000       0x3a ./src/Bsw/Services/SchM/SchM.o
  .group         0x00000000        0x8 ./src/Bsw/Mcal/Wdog/Wdog.o
  .group         0x00000000        0x8 ./src/Bsw/Mcal/Wdog/Wdog.o
  .group         0x00000000        0x8 ./src/Bsw/Mcal/Wdog/Wdog.o
@@ -356,7 +355,6 @@ Discarded input sections
  .debug_macro   0x00000000      0x15b ./src/Asw/Entry/Main.o
  .debug_macro   0x00000000       0x28 ./src/Asw/Entry/Main.o
  .debug_macro   0x00000000       0x58 ./src/Asw/Entry/Main.o
- .debug_macro   0x00000000       0x3a ./src/Asw/Entry/Main.o
  .group         0x00000000        0x8 ./Project_Settings/Startup_Code/system_S32K144.o
  .group         0x00000000        0x8 ./Project_Settings/Startup_Code/system_S32K144.o
  .group         0x00000000        0x8 ./Project_Settings/Startup_Code/system_S32K144.o
@@ -1119,7 +1117,7 @@ OUTPUT(schedulerJ.elf elf32-littlearm)
  .debug_ranges  0x00000130       0x20 ./Project_Settings/Startup_Code/system_S32K144.o
  .debug_ranges  0x00000150       0x10 ./Project_Settings/Startup_Code/startup.o
 
-.debug_macro    0x00000000    0x10404
+.debug_macro    0x00000000    0x10478
  .debug_macro   0x00000000       0xc0 ./src/Bsw/Services/SchM/SchM_Tasks.o
  .debug_macro   0x000000c0      0x868 ./src/Bsw/Services/SchM/SchM_Tasks.o
  .debug_macro   0x00000928       0x52 ./src/Bsw/Services/SchM/SchM_Tasks.o
@@ -1141,62 +1139,64 @@ OUTPUT(schedulerJ.elf elf32-littlearm)
  .debug_macro   0x00001252       0x19 ./src/Bsw/Services/SchM/SchM.o
  .debug_macro   0x0000126b     0xdf8d ./src/Bsw/Services/SchM/SchM.o
  .debug_macro   0x0000f1f8       0x10 ./src/Bsw/Services/SchM/SchM.o
- .debug_macro   0x0000f208       0xc3 ./src/Bsw/Mcal/Wdog/Wdog.o
- .debug_macro   0x0000f2cb       0xc8 ./src/Bsw/Mcal/Port/Port.o
- .debug_macro   0x0000f393       0x34 ./src/Bsw/Mcal/Port/Port.o
- .debug_macro   0x0000f3c7       0xc3 ./src/Bsw/Mcal/Nvic/Nvic.o
- .debug_macro   0x0000f48a       0xc3 ./src/Bsw/Mcal/Mcu/Mcu.o
- .debug_macro   0x0000f54d       0xc3 ./src/Bsw/Mcal/Lpit/Lpit.o
- .debug_macro   0x0000f610       0xc3 ./src/Bsw/Mcal/Dio/Dio.o
- .debug_macro   0x0000f6d3       0xeb ./src/Asw/Entry/Main.o
- .debug_macro   0x0000f7be       0x3a ./src/Asw/Entry/Main.o
- .debug_macro   0x0000f7f8       0xe9 ./Project_Settings/Startup_Code/system_S32K144.o
- .debug_macro   0x0000f8e1       0x10 ./Project_Settings/Startup_Code/system_S32K144.o
- .debug_macro   0x0000f8f1       0x6d ./Project_Settings/Startup_Code/system_S32K144.o
- .debug_macro   0x0000f95e      0x978 ./Project_Settings/Startup_Code/system_S32K144.o
- .debug_macro   0x000102d6       0x22 ./Project_Settings/Startup_Code/system_S32K144.o
- .debug_macro   0x000102f8       0x22 ./Project_Settings/Startup_Code/system_S32K144.o
- .debug_macro   0x0001031a       0xea ./Project_Settings/Startup_Code/startup.o
+ .debug_macro   0x0000f208       0x3a ./src/Bsw/Services/SchM/SchM.o
+ .debug_macro   0x0000f242       0xc3 ./src/Bsw/Mcal/Wdog/Wdog.o
+ .debug_macro   0x0000f305       0xc8 ./src/Bsw/Mcal/Port/Port.o
+ .debug_macro   0x0000f3cd       0x34 ./src/Bsw/Mcal/Port/Port.o
+ .debug_macro   0x0000f401       0xc3 ./src/Bsw/Mcal/Nvic/Nvic.o
+ .debug_macro   0x0000f4c4       0xc3 ./src/Bsw/Mcal/Mcu/Mcu.o
+ .debug_macro   0x0000f587       0xc3 ./src/Bsw/Mcal/Lpit/Lpit.o
+ .debug_macro   0x0000f64a       0xc3 ./src/Bsw/Mcal/Dio/Dio.o
+ .debug_macro   0x0000f70d       0xeb ./src/Asw/Entry/Main.o
+ .debug_macro   0x0000f7f8       0x3a ./src/Asw/Entry/Main.o
+ .debug_macro   0x0000f832       0x3a ./src/Asw/Entry/Main.o
+ .debug_macro   0x0000f86c       0xe9 ./Project_Settings/Startup_Code/system_S32K144.o
+ .debug_macro   0x0000f955       0x10 ./Project_Settings/Startup_Code/system_S32K144.o
+ .debug_macro   0x0000f965       0x6d ./Project_Settings/Startup_Code/system_S32K144.o
+ .debug_macro   0x0000f9d2      0x978 ./Project_Settings/Startup_Code/system_S32K144.o
+ .debug_macro   0x0001034a       0x22 ./Project_Settings/Startup_Code/system_S32K144.o
+ .debug_macro   0x0001036c       0x22 ./Project_Settings/Startup_Code/system_S32K144.o
+ .debug_macro   0x0001038e       0xea ./Project_Settings/Startup_Code/startup.o
 
-.debug_line     0x00000000     0x1e8b
- .debug_line    0x00000000      0x27f ./src/Bsw/Services/SchM/SchM_Tasks.o
- .debug_line    0x0000027f      0x1f8 ./src/Bsw/Services/SchM/SchM_Cfg.o
- .debug_line    0x00000477      0x398 ./src/Bsw/Services/SchM/SchM.o
- .debug_line    0x0000080f      0x224 ./src/Bsw/Mcal/Wdog/Wdog.o
- .debug_line    0x00000a33      0x241 ./src/Bsw/Mcal/Port/Port.o
- .debug_line    0x00000c74      0x224 ./src/Bsw/Mcal/Nvic/Nvic.o
- .debug_line    0x00000e98      0x276 ./src/Bsw/Mcal/Mcu/Mcu.o
- .debug_line    0x0000110e      0x25c ./src/Bsw/Mcal/Lpit/Lpit.o
- .debug_line    0x0000136a      0x252 ./src/Bsw/Mcal/Dio/Dio.o
- .debug_line    0x000015bc      0x35d ./src/Asw/Entry/Main.o
- .debug_line    0x00001919      0x295 ./Project_Settings/Startup_Code/system_S32K144.o
- .debug_line    0x00001bae       0x83 ./Project_Settings/Startup_Code/startup_S32K144.o
- .debug_line    0x00001c31      0x25a ./Project_Settings/Startup_Code/startup.o
+.debug_line     0x00000000     0x1ea0
+ .debug_line    0x00000000      0x285 ./src/Bsw/Services/SchM/SchM_Tasks.o
+ .debug_line    0x00000285      0x1f8 ./src/Bsw/Services/SchM/SchM_Cfg.o
+ .debug_line    0x0000047d      0x398 ./src/Bsw/Services/SchM/SchM.o
+ .debug_line    0x00000815      0x225 ./src/Bsw/Mcal/Wdog/Wdog.o
+ .debug_line    0x00000a3a      0x242 ./src/Bsw/Mcal/Port/Port.o
+ .debug_line    0x00000c7c      0x225 ./src/Bsw/Mcal/Nvic/Nvic.o
+ .debug_line    0x00000ea1      0x279 ./src/Bsw/Mcal/Mcu/Mcu.o
+ .debug_line    0x0000111a      0x260 ./src/Bsw/Mcal/Lpit/Lpit.o
+ .debug_line    0x0000137a      0x256 ./src/Bsw/Mcal/Dio/Dio.o
+ .debug_line    0x000015d0      0x35e ./src/Asw/Entry/Main.o
+ .debug_line    0x0000192e      0x295 ./Project_Settings/Startup_Code/system_S32K144.o
+ .debug_line    0x00001bc3       0x83 ./Project_Settings/Startup_Code/startup_S32K144.o
+ .debug_line    0x00001c46      0x25a ./Project_Settings/Startup_Code/startup.o
 
-.debug_str      0x00000000    0x62ee2
- .debug_str     0x00000000     0x40b8 ./src/Bsw/Services/SchM/SchM_Tasks.o
-                               0x413c (size before relaxing)
- .debug_str     0x000040b8      0x2a7 ./src/Bsw/Services/SchM/SchM_Cfg.o
+.debug_str      0x00000000    0x62efb
+ .debug_str     0x00000000     0x40b9 ./src/Bsw/Services/SchM/SchM_Tasks.o
+                               0x413d (size before relaxing)
+ .debug_str     0x000040b9      0x2bf ./src/Bsw/Services/SchM/SchM_Cfg.o
                                0x4319 (size before relaxing)
- .debug_str     0x0000435f    0x59ed3 ./src/Bsw/Services/SchM/SchM.o
+ .debug_str     0x00004378    0x59ed3 ./src/Bsw/Services/SchM/SchM.o
                               0x5e1d3 (size before relaxing)
- .debug_str     0x0005e232       0x50 ./src/Bsw/Mcal/Wdog/Wdog.o
+ .debug_str     0x0005e24b       0x50 ./src/Bsw/Mcal/Wdog/Wdog.o
                               0x5dcb9 (size before relaxing)
- .debug_str     0x0005e282       0xc0 ./src/Bsw/Mcal/Port/Port.o
+ .debug_str     0x0005e29b       0xc0 ./src/Bsw/Mcal/Port/Port.o
                               0x5dd89 (size before relaxing)
- .debug_str     0x0005e342       0x9a ./src/Bsw/Mcal/Nvic/Nvic.o
+ .debug_str     0x0005e35b       0x9a ./src/Bsw/Mcal/Nvic/Nvic.o
                               0x5dd21 (size before relaxing)
- .debug_str     0x0005e3dc       0xf2 ./src/Bsw/Mcal/Mcu/Mcu.o
+ .debug_str     0x0005e3f5       0xf2 ./src/Bsw/Mcal/Mcu/Mcu.o
                               0x5dd9a (size before relaxing)
- .debug_str     0x0005e4ce       0x90 ./src/Bsw/Mcal/Lpit/Lpit.o
+ .debug_str     0x0005e4e7       0x90 ./src/Bsw/Mcal/Lpit/Lpit.o
                               0x5dd5c (size before relaxing)
- .debug_str     0x0005e55e       0x76 ./src/Bsw/Mcal/Dio/Dio.o
+ .debug_str     0x0005e577       0x76 ./src/Bsw/Mcal/Dio/Dio.o
                               0x5dd53 (size before relaxing)
- .debug_str     0x0005e5d4       0x1d ./src/Asw/Entry/Main.o
-                               0x4315 (size before relaxing)
- .debug_str     0x0005e5f1     0x47d1 ./Project_Settings/Startup_Code/system_S32K144.o
+ .debug_str     0x0005e5ed       0x1d ./src/Asw/Entry/Main.o
+                               0x4316 (size before relaxing)
+ .debug_str     0x0005e60a     0x47d1 ./Project_Settings/Startup_Code/system_S32K144.o
                               0x624e5 (size before relaxing)
- .debug_str     0x00062dc2      0x120 ./Project_Settings/Startup_Code/startup.o
+ .debug_str     0x00062ddb      0x120 ./Project_Settings/Startup_Code/startup.o
                               0x6241c (size before relaxing)
 
 .comment        0x00000000       0x70

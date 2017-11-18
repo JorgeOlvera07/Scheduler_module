@@ -1,13 +1,69 @@
-/*
- * Mcu.c
- *
- *  Created on: 15/11/2017
- *      Author: uid87753
+/*============================================================================*/
+/*                        I BS SOFTWARE GROUP                                 */
+/*============================================================================*/
+/*                        OBJECT SPECIFICATION                                */
+/*============================================================================*/
+/*!
+ * $Source: Mcu.c $
+ * $Revision: 3 $
+ * $Author: Jorge Alberto Olvera Contreras, Luis Eduardo Archundia Picazzo $
+ * $Date: 17/11/2017 $
  */
+/*============================================================================*/
+/* DESCRIPTION :                                                              */
+/** \
+    
+*/
+/*============================================================================*/
+/* COPYRIGHT (C) CONTINENTAL AUTOMOTIVE 2014                                  */
+/* AUTOMOTIVE GROUP, Interior Division, Body and Security                     */
+/* ALL RIGHTS RESERVED                                                        */
+/*                                                                            */
+/* The reproduction, transmission, or use of this document or its content is  */
+/* not permitted without express written authority. Offenders will be liable  */
+/* for damages.                                                               */
+/* All rights, including rights created by patent grant or registration of a  */
+/* utility model or design, are reserved.                                     */
+/*                                                                            */
+/*============================================================================*/
+/*============================================================================*/
+/*                    REUSE HISTORY - taken over from                         */
+/*============================================================================*/
+/*  AUTHOR             |      VERSION       |        DESCRIPTION              */
+/*----------------------------------------------------------------------------*/
+/*  Luis Archundia     |         3          |                                 */
+/*  Jorge Olvera       |         3          |                                 */
+/*============================================================================*/
+/*                               OBJECT HISTORY                               */
+/*============================================================================*/
+/*
+ * $Log: Mcu.c  $
+  ============================================================================*/
 
+
+/* Includes */
+/*============================================================================*/
 
 #include "General.h"          /* include peripheral declarations */
 #include "Mcu.h"
+
+
+/* Defines */
+/*============================================================================*/
+
+
+
+/* Constants and types */
+/*============================================================================*/
+
+
+
+/* Exported Variables */
+/*============================================================================*/
+
+
+/* Exported functions */
+/*============================================================================*/
 
 void SOSC_init_8MHz(void) {
   SCG->SOSCDIV=0x00000101;  /* SOSCDIV1 & SOSCDIV2 =1: divide by 1 */
@@ -25,6 +81,7 @@ void SOSC_init_8MHz(void) {
   while(!(SCG->SOSCCSR & SCG_SOSCCSR_SOSCVLD_MASK)); /* Wait for sys OSC clk valid */
 }
 
+
 void SPLL_init_160MHz(void) {
   while(SCG->SPLLCSR & SCG_SPLLCSR_LK_MASK); /* Ensure SPLLCSR unlocked */
   SCG->SPLLCSR = 0x00000000;  /* SPLLEN=0: SPLL is disabled (default) */
@@ -41,6 +98,7 @@ void SPLL_init_160MHz(void) {
   while(!(SCG->SPLLCSR & SCG_SPLLCSR_SPLLVLD_MASK)); /* Wait for SPLL valid */
 }
 
+
 void NormalRUNmode_80MHz (void) {  /* Change to normal RUN mode with 8MHz SOSC, 80 MHz PLL*/
   SCG->RCCR=SCG_RCCR_SCS(6)      /* PLL as clock source*/
     |SCG_RCCR_DIVCORE(0b01)      /* DIVCORE=1, div. by 2: Core clock = 160/2 MHz = 80 MHz*/
@@ -48,4 +106,8 @@ void NormalRUNmode_80MHz (void) {  /* Change to normal RUN mode with 8MHz SOSC, 
     |SCG_RCCR_DIVSLOW(0b10);     /* DIVSLOW=2, div. by 2: SCG slow, flash clock= 26 2/3 MHz*/
   while (((SCG->CSR & SCG_CSR_SCS_MASK) >> SCG_CSR_SCS_SHIFT ) != 6) {}
                                  /* Wait for sys clk src = SPLL */
-}
+} 
+
+/* Notice: the file ends with a blank new line to avoid compiler warnings */
+
+
